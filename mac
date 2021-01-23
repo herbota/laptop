@@ -110,51 +110,73 @@ fi
 fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
-tap "thoughtbot/formulae"
+# tap "thoughtbot/formulae"
 tap "homebrew/services"
-tap "universal-ctags/universal-ctags"
-tap "heroku/brew"
+# tap "universal-ctags/universal-ctags"
+# tap "heroku/brew"
 
 # Unix
-brew "universal-ctags", args: ["HEAD"]
+# brew "universal-ctags", args: ["HEAD"]
 brew "git"
-brew "openssl"
+# brew "openssl"
 brew "rcm"
-brew "reattach-to-user-namespace"
-brew "the_silver_searcher"
-brew "tmux"
-brew "vim"
-brew "watchman"
+# brew "reattach-to-user-namespace"
+# brew "the_silver_searcher"
+# brew "tmux"
+# brew "vim"
+# brew "watchman"
 brew "zsh"
 
 # Heroku
-brew "heroku/brew/heroku"
-brew "parity"
+# brew "heroku/brew/heroku"
+# brew "parity"
 
 # GitHub
-brew "gh"
+# brew "gh"
 
 # Image manipulation
-brew "imagemagick"
+# brew "imagemagick"
 
 # Programming language prerequisites and package managers
-brew "libyaml" # should come after openssl
+# brew "libyaml" # should come after openssl
 brew "coreutils"
 brew "yarn"
 cask "gpg-suite"
 
 # Databases
-brew "postgres", restart_service: :changed
-brew "redis", restart_service: :changed
+# brew "postgres", restart_service: :changed
+# brew "redis", restart_service: :changed
+
+# vscode
+cask "visual-studio-code"
+
+brew "htop"
+brew "tree"
+brew "youtube-dl"
+brew "nethogs"
+brew "neofetch"
+brew "detox" #clean up filenames
+cask "keepassxc"
+cask "vlc"
+cask "keka" #File archiver
+cask "transmission" #Torrent Client
+cask "google-chrome"
+cask "firefox"
+cask "megasync"
+cask "zoom" #for meetings
+cask "krisp" #Noise cancelling
+cask "intel-power-gadget"
+cask "omnidisksweeper" #Finds large, unwanted files and deletes them
+
 EOF
 
-fancy_echo "Update heroku binary ..."
-brew unlink heroku
-brew link --force heroku
+# fancy_echo "Update heroku binary ..."
+# brew unlink heroku
+# brew link --force heroku
 
 fancy_echo "Configuring asdf version manager ..."
 if [ ! -d "$HOME/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.0
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
   append_to_zshrc "source $HOME/.asdf/asdf.sh" 1
 fi
 
@@ -172,7 +194,7 @@ add_or_update_asdf_plugin() {
 
 # shellcheck disable=SC1090
 source "$HOME/.asdf/asdf.sh"
-add_or_update_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
+# add_or_update_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
 add_or_update_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 
 install_asdf_language() {
@@ -186,15 +208,38 @@ install_asdf_language() {
   fi
 }
 
-fancy_echo "Installing latest Ruby ..."
-install_asdf_language "ruby"
-gem update --system
-number_of_cores=$(sysctl -n hw.ncpu)
-bundle config --global jobs $((number_of_cores - 1))
+# fancy_echo "Installing latest Ruby ..."
+# install_asdf_language "ruby"
+# gem update --system
+# number_of_cores=$(sysctl -n hw.ncpu)
+# bundle config --global jobs $((number_of_cores - 1))
 
 fancy_echo "Installing latest Node ..."
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
+
+GITHUB_USERNAME="herbota"
+if [ ! -f "$HOME/.ssh/id_$GITHUB_USERNAME@github" ]; then
+  git clone https://github.com/dolmen/github-keygen.git
+  cd github-keygen
+  ./github-keygen "$GITHUB_USERNAME"
+  cd ..
+  rm -Rf github-keygen
+fi
+git config --global credential.helper osxkeychain
+git config --global user.name "Andy Herbota"
+git config --global user.email andy@herbota.com
+git config --global pull.rebase true
+
+# VS Code extensions
+code --install-extension eamodio.gitlens
+code --install-extension EditorConfig.EditorConfig
+code --install-extension esbenp.prettier-vscode
+code --install-extension Gruntfuggly.todo-tree
+code --install-extension angular.ng-template
+
+# Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 if [ -f "$HOME/.laptop.local" ]; then
   fancy_echo "Running your customizations from ~/.laptop.local ..."
