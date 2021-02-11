@@ -150,12 +150,14 @@ cask "gpg-suite"
 # vscode
 cask "visual-studio-code"
 
+brew "wget"
 brew "htop"
 brew "tree"
+brew "ssh-copy-id"
 brew "youtube-dl"
-brew "nethogs"
 brew "neofetch"
 brew "detox" #clean up filenames
+brew "liquidctl" #driver for AIO liquid cooler
 cask "keepassxc"
 cask "vlc"
 cask "keka" #File archiver
@@ -167,6 +169,12 @@ cask "zoom" #for meetings
 cask "krisp" #Noise cancelling
 cask "intel-power-gadget"
 cask "omnidisksweeper" #Finds large, unwanted files and deletes them
+cask "balenaetcher"
+
+# read-write support for NTFS file system
+# cask "osxfuse"
+# brew "ntfs-3g"
+cask "mounty" #Requires Big Sur
 
 EOF
 
@@ -240,6 +248,9 @@ code --install-extension angular.ng-template
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+defaults write com.apple.TextEdit RichText -int 0
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 if [ -f "$HOME/.laptop.local" ]; then
   fancy_echo "Running your customizations from ~/.laptop.local ..."
