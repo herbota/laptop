@@ -170,6 +170,7 @@ cask "krisp" #Noise cancelling
 cask "intel-power-gadget"
 cask "omnidisksweeper" #Finds large, unwanted files and deletes them
 cask "balenaetcher"
+cask "docker"
 
 # read-write support for NTFS file system
 # cask "osxfuse"
