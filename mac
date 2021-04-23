@@ -159,6 +159,7 @@ brew "youtube-dl"
 brew "neofetch"
 brew "detox" #clean up filenames
 brew "liquidctl" #driver for AIO liquid cooler
+brew "wakeonlan"
 cask "keepassxc"
 cask "vlc"
 cask "keka" #File archiver
