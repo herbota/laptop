@@ -126,6 +126,7 @@ brew "rcm"
 # brew "vim"
 # brew "watchman"
 brew "zsh"
+brew "mosh"
 
 # Heroku
 # brew "heroku/brew/heroku"
@@ -171,6 +172,7 @@ cask "intel-power-gadget"
 cask "omnidisksweeper" #Finds large, unwanted files and deletes them
 cask "balenaetcher"
 cask "docker"
+cask "postman"
 
 # read-write support for NTFS file system
 # cask "osxfuse"
