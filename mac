@@ -160,6 +160,7 @@ brew "neofetch"
 brew "detox" #clean up filenames
 brew "liquidctl" #driver for AIO liquid cooler
 brew "wakeonlan"
+brew "asdf"
 cask "keepassxc"
 cask "vlc"
 cask "keka" #File archiver
@@ -186,12 +187,6 @@ EOF
 # brew unlink heroku
 # brew link --force heroku
 
-fancy_echo "Configuring asdf version manager ..."
-if [ ! -d "$HOME/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
-  append_to_zshrc "source $HOME/.asdf/asdf.sh" 1
-fi
-
 alias install_asdf_plugin=add_or_update_asdf_plugin
 add_or_update_asdf_plugin() {
   local name="$1"
@@ -204,8 +199,6 @@ add_or_update_asdf_plugin() {
   fi
 }
 
-# shellcheck disable=SC1090
-source "$HOME/.asdf/asdf.sh"
 # add_or_update_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
 add_or_update_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 
