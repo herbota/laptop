@@ -175,6 +175,7 @@ cask "omnidisksweeper" #Finds large, unwanted files and deletes them
 cask "balenaetcher"
 cask "docker"
 cask "postman"
+cask "mattermost"
 
 # read-write support for NTFS file system
 # cask "osxfuse"
