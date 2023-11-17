@@ -160,6 +160,7 @@ tap "homebrew/cask-fonts"
 # Databases
 # brew "postgresql@14", restart_service: :changed
 # brew "redis", restart_service: :changed
+cask "dbeaver-community"
 
 # vscode
 cask "visual-studio-code"
