@@ -192,6 +192,8 @@ cask "krisp" #Noise cancelling
 cask "postman"
 cask "mattermost"
 cask "sensiblesidebuttons"
+cask "rectangle"
+cask "monitorcontrol"
 
 # read-write support for NTFS file system
 # cask "osxfuse"
