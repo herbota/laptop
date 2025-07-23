@@ -137,6 +137,8 @@ tap "homebrew/cask-fonts"
 # brew "watchman"
 # brew "zsh"
 # brew "mosh"
+# brew "zoxide"
+# brew "fzf"
 
 # Heroku
 # brew "heroku/brew/heroku"
@@ -150,12 +152,17 @@ tap "homebrew/cask-fonts"
 
 # PDF Rendering
 # brew "poppler"
+brew "qpdf" 
+# qpdf --password=YOURPASSWORD-HERE --decrypt input.pdf output.pdf
+# qpdf --password-file=FILENAME --decrypt input.pdf output.pdf
 
 # Programming language prerequisites and package managers
 # brew "libyaml" # should come after openssl
 # brew "coreutils"
 # brew "yarn"
 # cask "gpg-suite-no-mail"
+# cask "dotnet-sdk"
+brew "openjdk"
 
 # Databases
 # brew "postgresql@14", restart_service: :changed
@@ -164,7 +171,10 @@ cask "dbeaver-community"
 
 # vscode
 cask "visual-studio-code"
-cask "font-cascadia-code" # https://gist.github.com/skylock/df4de48ae6a0d7540dad13c375c4b79f
+brew "font-cascadia-code" # https://gist.github.com/skylock/df4de48ae6a0d7540dad13c375c4b79f
+
+brew "iterm2"
+brew "font-caskaydia-cove-nerd-font"
 
 # brew "wget"
 brew "htop"
@@ -172,7 +182,7 @@ brew "tree"
 # brew "ssh-copy-id"
 # brew "youtube-dl"
 brew "nethogs"
-# brew "neofetch"
+# brew "fastfetch"
 # brew "detox" #clean up filenames
 # brew "liquidctl" #driver for AIO liquid cooler
 # brew "wakeonlan"
@@ -194,6 +204,9 @@ cask "mattermost"
 cask "sensiblesidebuttons"
 cask "rectangle"
 cask "monitorcontrol"
+cask "iina"
+cask "git-credential-manager"
+cask "windows-app"
 
 # read-write support for NTFS file system
 # cask "osxfuse"
